@@ -1,0 +1,4 @@
+SAM 2.1 Hiera Tiny (Segment Anything 2.1) by Meta AI, from facebookresearch/sam2 and facebook/sam2.1-hiera-tiny,
+Apache License 2.0 (LICENSE-SAM2-Apache-2.0.txt). ONNX conversion by ONNX Community (onnx-community/sam2.1-hiera-tiny-ONNX,
+unchanged copies also at CardAnvilModels/sam2.1-hiera-tiny-ONNX), uint8 files used without changes:
+vision_encoder_uint8.onnx (+ .onnx_data) and prompt_encoder_mask_decoder_uint8.onnx (+ .onnx_data).

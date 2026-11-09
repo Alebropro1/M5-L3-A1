@@ -1,0 +1,16 @@
+STICKER MAKER: SETUP
+
+1. Keep this folder whole: sticker_maker.py and the 4 SAM files (vision_encoder_uint8.onnx, vision_encoder_uint8.onnx_data,
+   prompt_encoder_mask_decoder_uint8.onnx, prompt_encoder_mask_decoder_uint8.onnx_data; 61 MB together) must stay together.
+2. Open a terminal INSIDE this folder and run:
+       python sticker_maker.py
+   (on Mac or Linux you may need python3 instead of python). The first line of the program installs opencv-python,
+   numpy and onnxruntime if they are missing (needs internet the first time). To install them yourself instead:
+       python -m pip install -r requirements.txt
+3. A window called "Sticker Maker" opens with your camera. Click on it once, so it gets your key presses.
+
+Needs: Python 3.10 or newer, a webcam and a mouse or touchpad (right-click on a Mac touchpad: click with two fingers).
+About 1 GB of free memory. No internet is needed after the install. Nothing you film leaves your computer.
+If the window closes at once, or the top line says "SAM is studying your photo" for more than 10 seconds, read the
+terminal: the error is there.
+Camera busy or blocked? Close Zoom, Teams or the camera app. On Windows: Settings > Privacy > Camera, allow apps to use the camera.

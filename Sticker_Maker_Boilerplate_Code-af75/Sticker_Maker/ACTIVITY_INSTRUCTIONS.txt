@@ -1,0 +1,55 @@
+STICKER MAKER (AI Expert, Module 5, Lesson 3)
+
+WHAT YOU WILL BUILD
+A camera app that cuts out ANYTHING you point at. Press SPACE to freeze the picture, click an object, and the AI
+outlines it in yellow. Press s and it is saved as a sticker: a PNG picture of only that object, with a see-through
+background, ready to drop into a chat, a slide or a poster.
+
+THE AI
+SAM (Segment Anything Model 2.1, tiny), made by Meta AI. It comes in two parts that run on your own computer:
+part 1, the encoder, studies the frozen photo once (about a second); part 2, the decoder, turns every click into an
+outline almost at once. In Lesson 2, MODNet only knew people. SAM cuts out anything you point at.
+
+YOUR FILE
+sticker_maker.py. Lines marked (given) are done for you: read their notes A to H. You write TODO 1 to TODO 5, in order.
+The TODO comments explain each job in words. Run the program after each TODO and check the result.
+
+STEP 1: Run the starter (setup: see SETUP.txt)
+Point the camera at a toy, a bottle or a pencil case and press SPACE. The top line says "SAM is studying your photo..."
+and never stops. Why? Read study().
+
+STEP 2: TODO 1, study(): SAM part 1 studies the photo
+Resize to 1024 x 1024, RGB, scale with MEAN and STD, reshape to (1, 3, 1024, 1024), run the encoder.
+Check: after about a second the top line shows the click keys.
+
+STEP 3: TODO 2, on_mouse(): your clicks are prompts
+A click means "this", a right-click means "not this".
+Check: a green dot where you click, a red dot where you right-click. The terminal says the guesses cover 0: that is TODO 3.
+
+STEP 4: TODO 3, ask_sam(): SAM part 2 turns clicks into 3 guesses
+Move each click to SAM's 1024 x 1024 size, then give SAM the points, the labels and no boxes.
+Check: the numbers after "SAM's 3 guesses cover" are no longer 0.
+
+STEP 5: TODO 4, pick(): choose a guess
+Sort the 3 guesses from small to big, take one, and make it as big as the photo.
+Check: the object turns yellow with a white edge. Press m: a part, then bigger, then the whole thing.
+
+STEP 6: TODO 5: the see-through sticker
+Add a 4th channel (alpha) from the outline and crop to the object.
+Check: press s and open the sticker PNG in this folder: only the object, the background is see-through.
+
+STEP 7: Find what the AI gets wrong
+Try an object on a background of almost the same colour, two objects that touch, and something shiny or see-through
+(a glass). When the outline misses a part, click that part too; when it takes too much, right-click the extra bit.
+
+KEYS
+SPACE = freeze the picture (SAM starts studying) / back to the live camera    click = this    right-click = not this
+m = SAM's next guess (a part / bigger / the whole thing)    s = save the sticker    q or Esc = quit (or close the window)
+
+TIPS
+Hold the object still or put it on a table, and press SPACE when it is sharp. Good light helps. Each SPACE starts again
+with no clicks. Errors appear in the terminal, not in the camera window.
+
+SHOW YOUR PARENT
+Make stickers of three different things, and say: "The AI was never told what these things are called. I point, and it
+finds the outline."
